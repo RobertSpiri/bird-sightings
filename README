@@ -1,0 +1,72 @@
+# Bird Sightings Application
+
+## Description
+
+The Bird Sightings Application is a Spring Boot application that allows users to manage bird sightings. It provides functionalities to add, retrieve, and delete bird sightings, as well as manage bird information.
+
+## Features
+
+- Add new birds and sightings
+- Retrieve all birds and sightings
+- Find birds by name or color
+- Find sightings by bird, location, or date range
+- Delete birds and sightings
+
+## Technologies Used
+
+- Java 11
+- Spring Boot
+- Spring WebFlux
+- Spring Data MongoDB Reactive
+- Reactor
+- Maven
+
+## Getting Started
+
+### Prerequisites
+
+- Java 11
+- Maven
+- MongoDB
+
+### Running the Application
+docker compose up command to start mongoDB container
+start the application
+use postman to test the endpoints
+
+## API Endpoints
+
+### Bird Endpoints
+
+- `POST /birds`: Add a new bird
+    body example: {
+                       "name": "Bird",
+                       "color": "red",
+                       "weight": "3.5",
+                       "height": "0.4"
+                   }
+- `GET /birds`: Retrieve all birds
+- `GET /birds/{name}`: Find a bird by name
+- `GET /birds/color/{color}`: Find birds by color
+- `DELETE /birds/{id}`: Delete a bird by ID
+
+### Sighting Endpoints
+
+- `POST /sightings`: Add a new sighting
+    body example: {
+                       "birdName": {
+                                        "name": "Bird",
+                                        "color": "red",
+                                        "weight": "3.5",
+                                        "height": "0.4"
+                                    },
+                       "location": "New York",
+                       "date": "2021-10-10"
+                   }
+- `GET /sightings`: Retrieve all sightings
+- `GET /sightings/bird/{birdName}`: Retrieve sightings by bird
+- `GET /sightings/location/{location}`: Retrieve sightings by location
+- `GET /sightings/date?startDate={startDate}&endDate={endDate}`: Retrieve sightings within a date range
+    startDate and endDate are required query parameters in the format yyyy-MM-dd
+- `GET /sightings/{id}`: Find a sighting by ID
+- `DELETE /sightings/{id}`: Delete a sighting by ID
